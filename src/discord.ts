@@ -8,6 +8,8 @@ import {
   type Message,
 } from "discord.js";
 import { createApp } from "./app.js";
+import { Backup } from "./backup.js";
+import { startHealthServer } from "./health.js";
 import { attitudeLabel, CHARACTERS, getCharacter, TOWN } from "./characters.js";
 import { config, requireEnv, walruscanBlobUrl, type ChannelBinding } from "./config.js";
 import type { LearnResult, Player, TurnInput, TurnResult } from "./game.js";
@@ -30,8 +32,11 @@ They remember what you tell them and how you treat them. Be rude to Brannoc and 
 Rumours spread: do something in public and the whole town may hear about it.
 Commands: \`/join\`, \`/talk\`, \`/journal\` (what they remember about you), \`/rumours\`, \`/optout\`.`;
 
+const backup = Backup.fromEnv(config.dataDir);
+await backup?.restore();
 const app = createApp();
 const { db, game, memory } = app;
+backup?.start(db);
 
 const busy = new Set<string>();
 const lastTurn = new Map<string, number>();
@@ -40,6 +45,7 @@ const lastConsentNotice = new Map<string, number>();
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
 });
+startHealthServer(db, () => client.isReady());
 
 client.once(Events.ClientReady, (c) => {
   console.log(`[discord] logged in as ${c.user.tag}; watching channels: ${[...config.discord.channels.keys()].join(", ")}`);
@@ -268,6 +274,8 @@ async function stop(signal: string) {
   console.log(`[discord] ${signal}: flushing memories and shutting down…`);
   await client.destroy();
   await app.shutdown();
+  backup?.stop();
+  await backup?.save(db).catch(logError);
   process.exit(0);
 }
 process.on("SIGINT", () => void stop("SIGINT"));

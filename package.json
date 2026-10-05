@@ -13,6 +13,7 @@
     "register": "tsx src/register-commands.ts",
     "check": "tsx src/check.ts",
     "stats": "tsx src/stats.ts",
+    "backup": "tsx src/backup-now.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test test/*.test.ts",
     "build": "tsc",

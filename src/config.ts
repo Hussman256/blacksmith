@@ -45,10 +45,10 @@ export const config = {
     maxDistance: Number(env("MEMWAL_MAX_DISTANCE", "0.75")),
   },
   llm: {
-    baseURL: env("LLM_BASE_URL", "https://openrouter.ai/api/v1"),
+    baseURL: env("LLM_BASE_URL", "https://api.groq.com/openai/v1"),
     apiKey: env("LLM_API_KEY"),
-    model: env("LLM_MODEL", "openrouter/free"),
-    extractModel: env("LLM_EXTRACT_MODEL") || env("LLM_MODEL", "openrouter/free"),
+    model: env("LLM_MODEL", "qwen/qwen3.8-27b"),
+    extractModel: env("LLM_EXTRACT_MODEL") || env("LLM_MODEL", "qwen/qwen3.8-27b"),
   },
   dataDir: env("DATA_DIR", "./data"),
 };
