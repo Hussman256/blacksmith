@@ -1,0 +1,70 @@
+<svg width="1024" height="1024" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A walrus rising from patterned waves in front of a red sun">
+<defs>
+<g id="scale">
+<circle r="34" fill="#1F3A68"></circle>
+<circle r="27" fill="#F3EBDD"></circle>
+<circle r="20" fill="#1F3A68"></circle>
+<circle r="13" fill="#F3EBDD"></circle>
+<circle r="6" fill="#1F3A68"></circle>
+</g>
+</defs>
+<circle cx="256" cy="226" r="168" fill="#D8442F"></circle>
+<g transform="translate(256 250) scale(0.72) translate(-256 -290)">
+<ellipse cx="256" cy="270" rx="150" ry="140" fill="#3B2B27"></ellipse>
+<path d="M222 340 Q214 400 222 456 Q230 462 236 454 Q242 400 246 345 Z" fill="#FBF6EC"></path>
+<path d="M290 340 Q298 400 290 456 Q282 462 276 454 Q270 400 266 345 Z" fill="#FBF6EC"></path>
+<circle cx="216" cy="305" r="62" fill="#C9A48C"></circle>
+<circle cx="296" cy="305" r="62" fill="#C9A48C"></circle>
+<ellipse cx="256" cy="258" rx="28" ry="17" fill="#1C1412"></ellipse>
+<circle cx="188" cy="214" r="13" fill="#F3EBDD"></circle>
+<circle cx="324" cy="214" r="13" fill="#F3EBDD"></circle>
+<circle cx="190" cy="216" r="7" fill="#1C1412"></circle>
+<circle cx="322" cy="216" r="7" fill="#1C1412"></circle>
+<g fill="#9E7B65">
+<circle cx="190" cy="300" r="5"></circle>
+<circle cx="208" cy="318" r="5"></circle>
+<circle cx="228" cy="300" r="5"></circle>
+<circle cx="198" cy="334" r="5"></circle>
+<circle cx="222" cy="336" r="5"></circle>
+<circle cx="322" cy="300" r="5"></circle>
+<circle cx="304" cy="318" r="5"></circle>
+<circle cx="284" cy="300" r="5"></circle>
+<circle cx="314" cy="334" r="5"></circle>
+<circle cx="290" cy="336" r="5"></circle>
+</g>
+</g>
+<use href="#scale" x="0" y="420"></use>
+<use href="#scale" x="64" y="420"></use>
+<use href="#scale" x="128" y="420"></use>
+<use href="#scale" x="192" y="420"></use>
+<use href="#scale" x="256" y="420"></use>
+<use href="#scale" x="320" y="420"></use>
+<use href="#scale" x="384" y="420"></use>
+<use href="#scale" x="448" y="420"></use>
+<use href="#scale" x="512" y="420"></use>
+<use href="#scale" x="32" y="452"></use>
+<use href="#scale" x="96" y="452"></use>
+<use href="#scale" x="160" y="452"></use>
+<use href="#scale" x="224" y="452"></use>
+<use href="#scale" x="288" y="452"></use>
+<use href="#scale" x="352" y="452"></use>
+<use href="#scale" x="416" y="452"></use>
+<use href="#scale" x="480" y="452"></use>
+<use href="#scale" x="0" y="484"></use>
+<use href="#scale" x="64" y="484"></use>
+<use href="#scale" x="128" y="484"></use>
+<use href="#scale" x="192" y="484"></use>
+<use href="#scale" x="256" y="484"></use>
+<use href="#scale" x="320" y="484"></use>
+<use href="#scale" x="384" y="484"></use>
+<use href="#scale" x="448" y="484"></use>
+<use href="#scale" x="512" y="484"></use>
+<use href="#scale" x="32" y="516"></use>
+<use href="#scale" x="96" y="516"></use>
+<use href="#scale" x="160" y="516"></use>
+<use href="#scale" x="224" y="516"></use>
+<use href="#scale" x="288" y="516"></use>
+<use href="#scale" x="352" y="516"></use>
+<use href="#scale" x="416" y="516"></use>
+<use href="#scale" x="480" y="516"></use>
+</svg>

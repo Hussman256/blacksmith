@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/blacksmith-walrus.png" alt="Blacksmith logo: a walrus rising from waves in front of a red sun" width="220"></p>
+
 # Blacksmith
 
 A Discord text game where the people of a small fantasy town remember you between sessions, across days and devices, using [Walrus Memory](https://memory.walrus.xyz).
