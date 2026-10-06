@@ -1,0 +1,32 @@
+# Fly.io: one always-on machine running the Discord bot, with a volume for data/.
+app = "blacksmith-emberfall"
+primary_region = "ams"
+
+[env]
+  PORT = "8080"
+  DATA_DIR = "/data"
+  MEMWAL_MODE = "live"
+  LLM_BASE_URL = "https://api.groq.com/openai/v1"
+  LLM_MODEL = "qwen/qwen3.8-27b"
+
+[mounts]
+  source = "blacksmith_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    path = "/health"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "60s"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
