@@ -282,5 +282,21 @@ process.on("SIGINT", () => void stop("SIGINT"));
 process.on("SIGTERM", () => void stop("SIGTERM"));
 process.on("unhandledRejection", logError);
 
+// Login can stall silently on shared hosts when Discord/Cloudflare rate-limits the IP, so surface why.
+client.on(Events.Warn, (m) => console.warn("[discord] warn:", m));
+client.on(Events.Error, logError);
+client.on(Events.Debug, (m) => {
+  if (/heartbeat/i.test(m)) return;
+  console.log("[discord] debug:", m);
+});
+client.rest.on("rateLimited", (info) => console.warn("[discord] rate limited:", JSON.stringify(info)));
+try {
+  const res = await fetch("https://discord.com/api/v10/gateway/bot", {
+    headers: { authorization: `Bot ${requireEnv("DISCORD_TOKEN")}` },
+  });
+  console.log(`[discord] gateway probe: ${res.status} ${(await res.text()).slice(0, 300)}`);
+} catch (err) {
+  console.error("[discord] gateway probe failed:", err);
+}
 console.log("[discord] logging in…");
 await client.login(requireEnv("DISCORD_TOKEN"));
