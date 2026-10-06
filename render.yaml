@@ -1,24 +1,17 @@
-# Render Blueprint: Starter web service running the Discord bot, with a persistent disk for data/.
-# Starter instances don't sleep, so no uptime monitor is needed. Render stops the old instance
-# before starting a new one when a disk is attached, so deploys never cause double replies.
-# (On the free plan instead: remove `disk`, set plan: free, and set BACKUP_GITHUB_* to keep data/.)
+# Render Blueprint: free web service running the Discord bot.
+# The free plan has no persistent disk, so set BACKUP_GITHUB_* to keep data/ across restarts,
+# and point an uptime monitor at /health so the instance doesn't sleep.
 services:
   - type: web
     name: blacksmith
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci
     startCommand: npm run bot
     healthCheckPath: /health
-    disk:
-      name: blacksmith-data
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_VERSION
         value: "24"
-      - key: DATA_DIR
-        value: /var/data
       - key: MEMWAL_MODE
         value: live
       - key: DISCORD_TOKEN
@@ -39,3 +32,7 @@ services:
         value: https://api.groq.com/openai/v1
       - key: LLM_MODEL
         value: qwen/qwen3.8-27b
+      - key: BACKUP_GITHUB_REPO
+        sync: false
+      - key: BACKUP_GITHUB_TOKEN
+        sync: false
