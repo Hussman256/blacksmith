@@ -9,8 +9,9 @@ export function startHealthServer(db: Db, isReady: () => boolean): void {
   const port = Number(process.env.PORT);
   if (!port) return;
   createServer((_req, res) => {
-    const body = JSON.stringify({ ok: isReady(), outbox: db.outboxCounts() });
-    res.writeHead(isReady() ? 200 : 503, { "content-type": "application/json" }).end(body);
+    // Always 200 so a slow Discord login doesn't fail the host's health check; `discord` reports readiness.
+    const body = JSON.stringify({ ok: true, discord: isReady(), outbox: db.outboxCounts() });
+    res.writeHead(200, { "content-type": "application/json" }).end(body);
   }).listen(port, () => console.log(`[health] listening on :${port}`));
 
   // Render routes a request to its own public URL through the proxy, which counts as traffic.

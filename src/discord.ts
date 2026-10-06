@@ -282,4 +282,5 @@ process.on("SIGINT", () => void stop("SIGINT"));
 process.on("SIGTERM", () => void stop("SIGTERM"));
 process.on("unhandledRejection", logError);
 
+console.log("[discord] logging in…");
 await client.login(requireEnv("DISCORD_TOKEN"));
